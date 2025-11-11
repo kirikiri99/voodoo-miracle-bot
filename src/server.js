@@ -165,8 +165,8 @@ ${moonPhase.phase}のエネルギーが満ちる今日は、特別な一日と�
 // 月の満ち欠けを計算
 function getMoonPhase() {
   const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
+  let year = now.getFullYear();
+  let month = now.getMonth() + 1;
   const day = now.getDate();
   
   let c = 0, e = 0, jd = 0, b = 0;
