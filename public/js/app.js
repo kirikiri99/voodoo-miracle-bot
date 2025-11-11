@@ -32,8 +32,9 @@ const elements = {
     // 運勢
     fortuneResult: document.getElementById('fortuneResult'),
     
-    // 月の位相
-    moonPhase: document.getElementById('moonPhase')
+    // 月の位相とデモ通知
+    moonPhase: document.getElementById('moonPhase'),
+    demoNotice: document.getElementById('demoNotice')
 };
 
 // 初期化
@@ -206,6 +207,11 @@ function displayPrayerResponse(data) {
     
     elements.responseContent.textContent = data.message;
     
+    // デモモードの通知を表示
+    if (data.demoMode && elements.demoNotice) {
+        elements.demoNotice.classList.remove('hidden');
+    }
+    
     showSection('response');
     
     // スムーズにスクロール
@@ -251,6 +257,11 @@ function displayFortune(data) {
         </div>
         <div class="response-content">${data.fortune}</div>
     `;
+    
+    // デモモードの通知を表示
+    if (data.demoMode && elements.demoNotice) {
+        elements.demoNotice.classList.remove('hidden');
+    }
     
     elements.fortuneResult.classList.remove('hidden');
     

@@ -86,6 +86,22 @@ body {
     font-style: italic;
 }
 
+.demo-notice {
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(255, 193, 7, 0.15);
+    border: 2px solid rgba(255, 193, 7, 0.6);
+    border-radius: 8px;
+    color: #ffc107;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.demo-notice small {
+    font-size: 0.85em;
+    color: rgba(255, 193, 7, 0.8);
+}
+
 .moon-phase {
     margin-top: 20px;
     font-size: 1.1em;
