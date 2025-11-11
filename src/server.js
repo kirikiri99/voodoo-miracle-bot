@@ -236,7 +236,7 @@ app.post('/api/pray', async (req, res) => {
     } else {
       // Gemini APIを使用
       console.log('🤖 Gemini APIで祈祷レスポンスを生成中...');
-      const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
       
       const fullPrompt = `${prayerConfig.prompt}
 
@@ -297,7 +297,7 @@ app.get('/api/fortune', async (req, res) => {
     } else {
       // Gemini APIを使用
       console.log('🤖 Gemini APIで運勢レスポンスを生成中...');
-      const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
       
       const prompt = `あなたは古代ブードゥーの占星術を司るシャーマンです。
 
