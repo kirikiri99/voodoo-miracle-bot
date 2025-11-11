@@ -1,0 +1,357 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #8b4789;
+    --secondary: #d4a574;
+    --dark: #1a0a1a;
+    --darker: #0d0509;
+    --light: #fff5f0;
+    --accent: #ff6b9d;
+    --success: #4ecdc4;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, #2a1a3a 100%);
+    color: var(--light);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 星空の背景 */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, white, transparent),
+        radial-gradient(2px 2px at 60px 70px, white, transparent),
+        radial-gradient(1px 1px at 50px 50px, white, transparent),
+        radial-gradient(1px 1px at 130px 80px, white, transparent),
+        radial-gradient(2px 2px at 90px 10px, white, transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: twinkle 3s infinite;
+    opacity: 0.6;
+    z-index: 0;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.3; }
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ヘッダー */
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(138, 71, 137, 0.1);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 2px solid var(--secondary);
+    box-shadow: 0 0 30px rgba(138, 71, 137, 0.3);
+}
+
+.title {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px var(--accent);
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 0 0 20px var(--accent); }
+    50% { text-shadow: 0 0 30px var(--accent), 0 0 40px var(--accent); }
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: var(--secondary);
+    font-style: italic;
+}
+
+.moon-phase {
+    margin-top: 20px;
+    font-size: 1.1em;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+}
+
+/* タブ */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.tab {
+    padding: 15px 30px;
+    background: rgba(138, 71, 137, 0.2);
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    color: var(--light);
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: all 0.3s;
+}
+
+.tab:hover {
+    background: rgba(138, 71, 137, 0.4);
+    transform: translateY(-2px);
+}
+
+.tab.active {
+    background: var(--primary);
+    box-shadow: 0 0 20px rgba(138, 71, 137, 0.5);
+}
+
+/* タブコンテンツ */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 祈祷タイプ */
+.prayer-types {
+    background: rgba(138, 71, 137, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid var(--secondary);
+}
+
+.prayer-types h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--secondary);
+}
+
+.type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.type-card {
+    background: linear-gradient(135deg, rgba(138, 71, 137, 0.3), rgba(212, 165, 116, 0.1));
+    border: 2px solid var(--secondary);
+    border-radius: 15px;
+    padding: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    color: var(--light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.type-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(138, 71, 137, 0.5);
+    background: linear-gradient(135deg, rgba(138, 71, 137, 0.5), rgba(212, 165, 116, 0.2));
+}
+
+.type-emoji {
+    font-size: 3em;
+}
+
+.type-name {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+/* フォーム */
+.prayer-form, .fortune-container {
+    background: rgba(138, 71, 137, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid var(--secondary);
+}
+
+.prayer-form h2, .fortune-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--secondary);
+}
+
+.back-btn {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--secondary);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: var(--light);
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateX(-5px);
+}
+
+textarea {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--light);
+    font-size: 1.1em;
+    resize: vertical;
+    margin-bottom: 20px;
+    font-family: inherit;
+}
+
+textarea::placeholder {
+    color: rgba(255, 245, 240, 0.5);
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 20px rgba(138, 71, 137, 0.5);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    color: var(--light);
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(138, 71, 137, 0.7);
+}
+
+/* レスポンスエリア */
+.response-area {
+    background: rgba(138, 71, 137, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid var(--secondary);
+}
+
+.response-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.response-header h2 {
+    color: var(--secondary);
+    margin-bottom: 15px;
+}
+
+.moon-info {
+    font-size: 1.1em;
+    color: var(--success);
+}
+
+.response-content {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--secondary);
+    line-height: 1.8;
+    white-space: pre-wrap;
+    font-size: 1.05em;
+}
+
+/* ローディング */
+.loading {
+    text-align: center;
+    padding: 60px;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    border: 4px solid rgba(138, 71, 137, 0.3);
+    border-top: 4px solid var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-sub {
+    color: var(--secondary);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* ユーティリティ */
+.hidden {
+    display: none !important;
+}
+
+/* フッター */
+.footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+    color: var(--secondary);
+    font-style: italic;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2em;
+    }
+    
+    .type-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .prayer-form, .response-area, .prayer-types, .fortune-container {
+        padding: 20px;
+    }
+    
+    .tabs {
+        flex-direction: column;
+    }
+}

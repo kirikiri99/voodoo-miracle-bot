@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 Voodoo Miracle BOT - シャーマンの祈祷</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">🔮 Voodoo Miracle BOT</h1>
+            <p class="subtitle">シャーマンの祈祷へようこそ</p>
+            <div id="moonPhase" class="moon-phase"></div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" data-tab="prayer">祈祷相談</button>
+            <button class="tab" data-tab="fortune">今日の運勢</button>
+        </nav>
+
+        <!-- 祈祷相談タブ -->
+        <div id="prayerTab" class="tab-content active">
+            <div class="prayer-types" id="prayerTypes">
+                <h2>🕯️ 祈祷の種類を選んでください</h2>
+                <div class="type-grid">
+                    <button class="type-card" data-type="love">
+                        <span class="type-emoji">💕</span>
+                        <span class="type-name">恋愛の祈祷</span>
+                    </button>
+                    <button class="type-card" data-type="wealth">
+                        <span class="type-emoji">💰</span>
+                        <span class="type-name">金運の祈祷</span>
+                    </button>
+                    <button class="type-card" data-type="health">
+                        <span class="type-emoji">🌿</span>
+                        <span class="type-name">健康の祈祷</span>
+                    </button>
+                    <button class="type-card" data-type="protection">
+                        <span class="type-emoji">🛡️</span>
+                        <span class="type-name">厄除けの祈祷</span>
+                    </button>
+                    <button class="type-card" data-type="general">
+                        <span class="type-emoji">🔮</span>
+                        <span class="type-name">総合的な祈祷</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="prayer-form hidden" id="prayerForm">
+                <button class="back-btn" id="backBtn">← 戻る</button>
+                <h2 id="selectedType">祈祷の種類</h2>
+                <textarea 
+                    id="prayerMessage" 
+                    placeholder="あなたの願いや悩みをシャーマンに打ち明けてください。心を開いて、正直な気持ちを書いてください..."
+                    rows="6"
+                ></textarea>
+                <button class="submit-btn" id="submitPrayer">
+                    <span class="btn-text">シャーマンに祈祷を依頼する</span>
+                    <span class="btn-icon">🕯️</span>
+                </button>
+            </div>
+
+            <div class="response-area hidden" id="responseArea">
+                <button class="back-btn" id="backToFormBtn">← 新しい祈祷</button>
+                <div class="response-header">
+                    <h2 id="responseTitle"></h2>
+                    <div class="moon-info" id="responseMoon"></div>
+                </div>
+                <div class="response-content" id="responseContent"></div>
+            </div>
+
+            <div class="loading hidden" id="loading">
+                <div class="spinner"></div>
+                <p>シャーマンが霊界と交信しています...</p>
+                <p class="loading-sub">しばらくお待ちください</p>
+            </div>
+        </div>
+
+        <!-- 今日の運勢タブ -->
+        <div id="fortuneTab" class="tab-content">
+            <div class="fortune-container">
+                <h2>🌙 今日の運勢</h2>
+                <button class="submit-btn" id="getFortune">
+                    <span class="btn-text">今日の運勢を見る</span>
+                    <span class="btn-icon">✨</span>
+                </button>
+                <div class="fortune-result hidden" id="fortuneResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>🕯️ 古代ブードゥーの叡智があなたを導きます 🕯️</p>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

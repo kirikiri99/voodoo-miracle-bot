@@ -1,0 +1,22 @@
+{
+  "name": "voodoo-miracle-bot",
+  "version": "1.0.0",
+  "description": "Voodoo Miracle BOT - Gemini連携スピリチュアルAIコンシェルジュ",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": ["voodoo", "spiritual", "ai", "gemini", "shaman"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "@google/generative-ai": "^0.1.3",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
