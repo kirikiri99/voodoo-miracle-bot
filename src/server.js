@@ -10,6 +10,13 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// 検索エンジンクロール防止ヘッダー
+app.use((req, res, next) => {
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet');
+  next();
+});
+
 app.use(express.static('public'));
 
 // Gemini AI初期化（APIキーがある場合のみ）
