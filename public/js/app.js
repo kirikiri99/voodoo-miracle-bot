@@ -70,6 +70,16 @@ function initTabs() {
                 elements.fortuneResult.classList.add('hidden');
                 elements.fortuneResult.innerHTML = '';
             }
+            
+            // 祈祷相談タブに切り替えた時は祈祷タイプ選択エリアにスクロール
+            if (tabName === 'prayer') {
+                setTimeout(() => {
+                    elements.prayerTypes.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
         });
     });
 }
