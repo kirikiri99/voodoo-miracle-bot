@@ -1,0 +1,7 @@
+node_modules
+.env
+.git
+*.log
+MESSAGE_IMPROVEMENT.md
+PRIVACY_SETTINGS.md
+CLAUDE.md

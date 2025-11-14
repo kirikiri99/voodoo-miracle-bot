@@ -142,11 +142,53 @@ voodoo-miracle-bot/
 - **フロントエンド:** Vanilla JavaScript, HTML5, CSS3
 - **スタイル:** カスタムCSS（ダークテーマ、星空背景、グラデーション）
 
+## 🚀 デプロイ
+
+### Vercelへのデプロイ
+
+このプロジェクトはVercelで簡単にデプロイできます：
+
+1. **GitHubリポジトリと連携**
+   - [Vercel](https://vercel.com)にアクセスしてログイン
+   - "New Project"をクリック
+   - GitHubリポジトリ `voodoo-miracle-bot` をインポート
+
+2. **環境変数の設定**
+   - Vercelのプロジェクト設定で環境変数を追加：
+     - `GEMINI_API_KEY`: あなたのGemini API Key
+
+3. **デプロイ**
+   - "Deploy"をクリックすると自動的にデプロイされます
+   - mainブランチへのpush時に自動再デプロイされます
+
+### 手動デプロイ（Vercel CLI）
+
+```bash
+# Vercel CLIをインストール
+npm install -g vercel
+
+# ログイン
+vercel login
+
+# デプロイ
+vercel
+
+# 本番環境にデプロイ
+vercel --prod
+```
+
+### 環境変数の設定（Vercel CLI）
+
+```bash
+vercel env add GEMINI_API_KEY
+```
+
 ## 🔒 セキュリティ
 
 - 環境変数で機密情報を管理
 - CORS設定によるアクセス制御
 - API Keyは`.env`ファイルで管理（Gitにコミットしない）
+- 検索エンジンクロール防止設定（robots.txt、meta tags、HTTP headers）
 
 ## 📝 ライセンス
 
