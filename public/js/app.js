@@ -20,6 +20,14 @@ const elements = {
     submitPrayer: document.getElementById('submitPrayer'),
     getFortune: document.getElementById('getFortune'),
     
+    // アクションボタン
+    documentBtn: document.getElementById('documentBtn'),
+    
+    // モーダル
+    documentModal: document.getElementById('documentModal'),
+    modalClose: document.getElementById('modalClose'),
+    documentForm: document.getElementById('documentForm'),
+    
     // フォーム要素
     prayerMessage: document.getElementById('prayerMessage'),
     selectedType: document.getElementById('selectedType'),
@@ -109,6 +117,33 @@ function initButtons() {
     
     // 運勢取得
     elements.getFortune.addEventListener('click', getFortune);
+    
+    // 資料請求ボタン
+    if (elements.documentBtn) {
+        elements.documentBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    }
+    
+    // モーダルを閉じる
+    if (elements.modalClose) {
+        elements.modalClose.addEventListener('click', closeModal);
+    }
+    
+    // モーダル外をクリックして閉じる
+    if (elements.documentModal) {
+        elements.documentModal.addEventListener('click', (e) => {
+            if (e.target === elements.documentModal) {
+                closeModal();
+            }
+        });
+    }
+    
+    // 資料請求フォーム送信
+    if (elements.documentForm) {
+        elements.documentForm.addEventListener('submit', handleDocumentSubmit);
+    }
 }
 
 // セクション表示切り替え
@@ -270,6 +305,66 @@ function displayFortune(data) {
         behavior: 'smooth',
         block: 'nearest'
     });
+}
+
+// モーダルを開く
+function openModal() {
+    if (elements.documentModal) {
+        elements.documentModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// モーダルを閉じる
+function closeModal() {
+    if (elements.documentModal) {
+        elements.documentModal.classList.add('hidden');
+        document.body.style.overflow = '';
+        
+        // フォームをリセット
+        if (elements.documentForm) {
+            elements.documentForm.reset();
+        }
+    }
+}
+
+// 資料請求フォーム送信
+async function handleDocumentSubmit(e) {
+    e.preventDefault();
+    
+    const submitBtn = elements.documentForm.querySelector('.submit-btn');
+    const originalText = submitBtn.innerHTML;
+    
+    // ボタンを無効化
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="btn-text">送信中...</span>';
+    
+    try {
+        const formData = {
+            name: elements.documentForm.name.value,
+            email: elements.documentForm.email.value,
+            phone: elements.documentForm.phone.value,
+            message: elements.documentForm.message.value
+        };
+        
+        // ここでは実際の送信処理をシミュレート
+        // 実際の実装では、バックエンドAPIに送信します
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // 成功メッセージ
+        alert('資料請求を受け付けました。ご登録いただいたメールアドレスに資料をお送りします。');
+        
+        // モーダルを閉じる
+        closeModal();
+        
+    } catch (error) {
+        console.error('送信エラー:', error);
+        alert('送信に失敗しました。もう一度お試しください。');
+    } finally {
+        // ボタンを元に戻す
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+    }
 }
 
 // エラーハンドリング
