@@ -1,17 +1,11 @@
 services:
   - type: web
     name: voodoo-miracle-bot
-    runtime: node
-    plan: free
-    branch: main
+    env: node
     buildCommand: npm install
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 3000
       - key: GEMINI_API_KEY
         sync: false
-    healthCheckPath: /
-    autoDeploy: true
