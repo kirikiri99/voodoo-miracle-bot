@@ -2,6 +2,8 @@ services:
   - type: web
     name: voodoo-miracle-bot
     env: node
+    region: oregon
+    plan: free
     buildCommand: npm install
     startCommand: npm start
     envVars:
@@ -9,3 +11,5 @@ services:
         value: production
       - key: GEMINI_API_KEY
         sync: false
+      - key: PORT
+        value: 10000

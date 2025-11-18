@@ -144,9 +144,38 @@ voodoo-miracle-bot/
 
 ## 🚀 デプロイ
 
+### Renderへのデプロイ（推奨）
+
+このプロジェクトはRenderで簡単にデプロイできます：
+
+1. **Renderアカウントを作成**
+   - [Render](https://render.com)にアクセスしてログイン
+   - GitHubアカウントと連携
+
+2. **新しいWebサービスを作成**
+   - "New +" → "Web Service" を選択
+   - GitHubリポジトリ `voodoo-miracle-bot` を接続
+   - または `render.yaml` を使って自動設定
+
+3. **環境変数の設定**
+   - Renderのダッシュボードで環境変数を追加：
+     - `GEMINI_API_KEY`: あなたのGemini API Key
+     - `NODE_ENV`: production
+   - （`render.yaml`で自動設定される場合もあります）
+
+4. **デプロイ**
+   - "Create Web Service"をクリック
+   - 自動的にビルド＆デプロイが開始されます
+   - mainブランチへのpush時に自動再デプロイされます
+
+**Render.yamlを使った自動デプロイ:**
+- リポジトリに`render.yaml`が含まれているので、Renderが自動的に設定を読み込みます
+- 無料プランで利用可能
+- HTTPS自動設定
+
 ### Vercelへのデプロイ
 
-このプロジェクトはVercelで簡単にデプロイできます：
+このプロジェクトはVercelでも簡単にデプロイできます：
 
 1. **GitHubリポジトリと連携**
    - [Vercel](https://vercel.com)にアクセスしてログイン
