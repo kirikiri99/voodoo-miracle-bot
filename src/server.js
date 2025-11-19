@@ -497,6 +497,16 @@ app.get('/api/prayer-types', (req, res) => {
   res.json({ types });
 });
 
+// ヘルスチェックエンドポイント（Renderスリープ防止用）
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    mode: DEMO_MODE ? 'demo' : 'production'
+  });
+});
+
 // サーバー起動
 app.listen(PORT, () => {
   console.log(`🔮 Voodoo Miracle BOT is running on port ${PORT}`);
