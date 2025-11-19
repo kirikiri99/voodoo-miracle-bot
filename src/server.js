@@ -11,9 +11,23 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// 検索エンジンクロール防止ヘッダー
+// セキュリティ＆プライバシー保護ヘッダー
 app.use((req, res, next) => {
+  // 検索エンジンクロール防止
   res.setHeader('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet');
+  
+  // プライバシー保護ヘッダー
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'no-referrer');
+  res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+  
+  // キャッシュ無効化（プライバシー保護）
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  
   next();
 });
 
